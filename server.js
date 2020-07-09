@@ -5,16 +5,17 @@ const { getPassphrase, getCodedPassphrase } = require('./lib');
 
 const app = express();
 
-app.get('/generate/:phr_sel', async (req, res) => {
+app.get('/generate/:phrSel', async (req, res) => {
   try {
-    if(isNaN(req.params.phr_sel)) {
-      const passphrase = getCodedPassphrase(req.params.phr_sel);
-    }
-    else {
-      const passphrase = await getPassphrase(req.params.phr_sel);
+    let passphrase;
+    if (isNaN(req.params.phrSel)) {
+      passphrase = getCodedPassphrase(req.params.phrSel);
+    } else {
+      passphrase = await getPassphrase(req.params.phrSel);
     }
     res.json({ success: true, passphrase });
   } catch (error) {
+    console.log(error);
     res.status(500).send('Server Error');
   }
 });
