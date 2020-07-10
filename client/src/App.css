@@ -469,3 +469,13 @@ table th {
   background: var(--primary-color);
   cursor: pointer;
 }
+
+.radiolabel {
+  display: inline-block;
+  width: 50%;
+  font-size: 1.2rem;
+}
+
+.radio1 {
+  margin-left: 1.5rem;
+}
